@@ -15,6 +15,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        // Use the variable archives every time the sidebar.blade.php is used
+        view()->composer('layouts.sidebar' , function($view) {
+            $view->with('archives', \App\Post::archives());
+        });
     }
 
     /**
