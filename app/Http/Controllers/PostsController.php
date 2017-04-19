@@ -15,6 +15,8 @@ class PostsController extends Controller
 
     public function index()
     {
+        // return session('message');
+
         $posts = Post::latest()
             ->filter(request(['month', 'year']))
             ->get();
