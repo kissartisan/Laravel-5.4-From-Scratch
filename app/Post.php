@@ -4,6 +4,7 @@ namespace App;
 
 // use Illuminate\Database\Eloquent\Model;
 
+use App\Tag;
 use Carbon\Carbon; 
 
 // Extend the Post with our own Model
@@ -56,4 +57,11 @@ class Post extends Model
                     ->get()
                     ->toArray();
 	}
+
+    public function tags()
+    {
+        // Any post may have many tags
+        // Any tag may have many post
+        return $this->belongsToMany(Tag::class);
+    }
 }
