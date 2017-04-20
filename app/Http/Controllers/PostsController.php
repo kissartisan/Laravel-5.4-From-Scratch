@@ -34,7 +34,7 @@ class PostsController extends Controller
     }
 
     /**
-     * Show a post use a 
+     * Show a post
      */
     public function show(Post $post)
     {
@@ -57,6 +57,7 @@ class PostsController extends Controller
             new Post(request(['title', 'body']))
         );
 
+        session()->flash('message', 'Your post has been created!');
 
         return redirect('/');
     }
