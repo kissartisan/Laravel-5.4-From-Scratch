@@ -18,7 +18,10 @@ class AppServiceProvider extends ServiceProvider
 
         // Use the variable archives every time the sidebar.blade.php is used
         view()->composer('layouts.sidebar' , function($view) {
-            $view->with('archives', \App\Post::archives());
+            $archives = \App\Post::archives();
+            $tags = \App\Tag::has('posts')->pluck('name');
+
+            $view->with(compact('archives', 'tags'));
         });
     }
 
